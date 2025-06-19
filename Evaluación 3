@@ -1,0 +1,73 @@
+#include <stdio.h>
+
+int tablaMultiplicar() {
+    int numero;
+    printf("Ingresa un numero: ");
+    scanf("%d", &numero);
+
+    for (int i = 1; i <= 10; i++) {
+        printf("%d x %d = %d\n", numero, i, numero * i);
+    }
+
+    return 0;
+}
+
+int medirCiclos() {
+    int valor = 50;
+    int *puntero = &valor;
+
+    printf("Valor usando apuntador: %d\n", *puntero);
+    printf("Direccion de memoria: %p\n", puntero);
+
+    return 0;
+}
+
+int listaProductos() {
+    char productos[5][20];
+    float precios[5];
+    float total = 0;
+
+    for (int i = 0; i < 5; i++) {
+        printf("Nombre del producto %d: ", i + 1);
+        scanf("%s", productos[i]);
+        printf("Precio del producto %d: ", i + 1);
+        scanf("%f", &precios[i]);
+        total += precios[i];
+    }
+
+    printf("\nLista de productos:\n");
+    for (int i = 0; i < 5; i++) {
+        printf("%s - $%.2f\n", productos[i], precios[i]);
+    }
+    printf("Total a pagar: $%.2f\n", total);
+
+    return 0;
+}
+
+int main() {
+    int opcion = 0;
+
+    while (opcion != 4) {
+        printf("\n--- MENU ---\n");
+        printf("1. Imprimir tabla de multiplicar\n");
+        printf("2. Medir ciclos de reloj (apuntadores)\n");
+        printf("3. Lista de 5 productos y suma total\n");
+        printf("4. Salir\n");
+        printf("Elige una opcion: ");
+        scanf("%d", &opcion);
+
+        if (opcion == 1) {
+            tablaMultiplicar();
+        } else if (opcion == 2) {
+            medirCiclos();
+        } else if (opcion == 3) {
+            listaProductos();
+        } else if (opcion == 4) {
+            printf("Saliendo del programa...\n");
+        } else {
+            printf("Opcion no valida.\n");
+        }
+    }
+
+    return 0;
+}
